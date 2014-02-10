@@ -76,7 +76,8 @@ class Configuration implements ConfigurationInterface
                             'password',
                             'ip',
                             'logging',
-                            'type'
+                            'type',
+                            'timeout',
                         ) as $key) {
                             if (array_key_exists($key, $v)) {
                                 $connection[$key] = $v[$key];
@@ -116,6 +117,7 @@ class Configuration implements ConfigurationInterface
                     ->scalarNode('ip')->defaultNull()->end()
                     ->booleanNode('logging')->defaultValue($this->debug)->end()
                     ->scalarNode('type')->end()
+                    ->scalarNode('timeout')->defaultValue(0.01)->end()
                 ->end()
             ->end()
         ;
